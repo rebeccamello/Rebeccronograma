@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +12,7 @@
         <!--Agenda-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Rebeccronograma" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ScheduleViewController" customModule="Rebeccronograma" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,35 +29,89 @@
                                                 <color key="textColor" name="AccentColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yCX-B6-E7Y">
-                                                <rect key="frame" x="0.0" y="48" width="414" height="330"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aiN-uJ-Q55">
+                                                <rect key="frame" x="20" y="56" width="374" height="315"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="330" id="y31-8l-twn"/>
+                                                    <constraint firstAttribute="height" constant="315" id="Qva-BQ-qok"/>
                                                 </constraints>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tM6-Pq-TEY">
-                                                    <size key="itemSize" width="128" height="128"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KQ3-U5-xEW">
+                                                    <size key="itemSize" width="374" height="80"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="shb-mH-OsR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Yin-OH-yYy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="todayCell" id="z35-TB-Do4" customClass="TodayCell" customModule="Rebeccronograma" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Raa-SI-bri" customClass="RoundedView" customModule="Rebeccronograma" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14h05 14h35" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qa-Oi-dkG">
+                                                                    <rect key="frame" x="16" y="16" width="48" height="48"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="48" id="miU-hU-Ai9"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" name="AccentColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tob-Mm-dpi" customClass="RoundedView" customModule="Rebeccronograma" customModuleProvider="target">
+                                                                    <rect key="frame" x="80" y="8" width="4" height="64"/>
+                                                                    <color key="backgroundColor" name="OnHold"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="4" id="cWK-wZ-6NF"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="4"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Individual" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5f-37-Oce">
+                                                                    <rect key="frame" x="100" y="44" width="55" height="15"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" name="AccentColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carol Taus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEx-6d-QIs">
+                                                                    <rect key="frame" x="100" y="19" width="86" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <color key="textColor" name="AccentColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="CellColor"/>
+                                                            <constraints>
+                                                                <constraint firstItem="8Qa-Oi-dkG" firstAttribute="leading" secondItem="Raa-SI-bri" secondAttribute="leading" constant="16" id="1ez-iM-aFN"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Tob-Mm-dpi" secondAttribute="bottom" constant="8" id="3WH-oy-aD2"/>
+                                                                <constraint firstItem="Tob-Mm-dpi" firstAttribute="top" secondItem="Raa-SI-bri" secondAttribute="top" constant="8" id="KY5-Bz-irh"/>
+                                                                <constraint firstAttribute="centerY" secondItem="tEx-6d-QIs" secondAttribute="bottom" id="Pcs-rF-FDC"/>
+                                                                <constraint firstAttribute="bottom" secondItem="8Qa-Oi-dkG" secondAttribute="bottom" constant="16" id="RLf-ok-W2u"/>
+                                                                <constraint firstItem="8Qa-Oi-dkG" firstAttribute="top" secondItem="Raa-SI-bri" secondAttribute="top" constant="16" id="U9A-bq-Uop"/>
+                                                                <constraint firstItem="tEx-6d-QIs" firstAttribute="leading" secondItem="Tob-Mm-dpi" secondAttribute="trailing" constant="16" id="Wxt-6A-CsY"/>
+                                                                <constraint firstItem="e5f-37-Oce" firstAttribute="leading" secondItem="Tob-Mm-dpi" secondAttribute="trailing" constant="16" id="dJI-hA-gX4"/>
+                                                                <constraint firstItem="e5f-37-Oce" firstAttribute="top" secondItem="tEx-6d-QIs" secondAttribute="bottom" constant="4" id="fQ7-6P-Ysf"/>
+                                                                <constraint firstItem="Tob-Mm-dpi" firstAttribute="leading" secondItem="8Qa-Oi-dkG" secondAttribute="trailing" constant="16" id="j42-iU-EMu"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="6"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </collectionViewCellContentView>
+                                                        <size key="customSize" width="374" height="80"/>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" name="BgColor"/>
                                         <constraints>
-                                            <constraint firstItem="yCX-B6-E7Y" firstAttribute="top" secondItem="pav-pE-W67" secondAttribute="bottom" constant="8" id="L3G-uc-waj"/>
-                                            <constraint firstAttribute="trailing" secondItem="yCX-B6-E7Y" secondAttribute="trailing" id="WZo-rw-S6R"/>
-                                            <constraint firstItem="yCX-B6-E7Y" firstAttribute="leading" secondItem="46p-zt-PCc" secondAttribute="leading" id="awo-az-MDi"/>
+                                            <constraint firstAttribute="trailing" secondItem="aiN-uJ-Q55" secondAttribute="trailing" constant="20" id="MBo-do-0fd"/>
+                                            <constraint firstItem="aiN-uJ-Q55" firstAttribute="leading" secondItem="46p-zt-PCc" secondAttribute="leading" constant="20" id="QXO-Gb-mxu"/>
+                                            <constraint firstItem="aiN-uJ-Q55" firstAttribute="top" secondItem="pav-pE-W67" secondAttribute="bottom" constant="16" id="pxu-i0-f1w"/>
                                             <constraint firstAttribute="trailing" secondItem="pav-pE-W67" secondAttribute="trailing" constant="20" id="qG8-C6-te2"/>
                                             <constraint firstItem="pav-pE-W67" firstAttribute="leading" secondItem="46p-zt-PCc" secondAttribute="leading" constant="20" id="x1r-U4-TTE"/>
                                             <constraint firstItem="pav-pE-W67" firstAttribute="top" secondItem="46p-zt-PCc" secondAttribute="top" constant="16" id="zGr-WN-APC"/>
@@ -90,6 +143,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Agenda" id="RVu-mK-SYz"/>
+                    <connections>
+                        <outlet property="todayCollectionView" destination="aiN-uJ-Q55" id="qrG-RA-UNq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,6 +157,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Uep-Cx-8hY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Drz-0A-mPI">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" name="BgColor"/>
@@ -180,13 +237,16 @@
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
         <namedColor name="AccentColor">
-            <color red="0.13333333333333333" green="0.039215686274509803" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.13300000131130219" green="0.039000000804662704" blue="0.31799998879432678" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="BgColor">
-            <color red="0.90980392156862744" green="0.90588235294117647" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.9100000262260437" green="0.90600001811981201" blue="0.92900002002716064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="CellColor">
+            <color red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="OnHold">
+            <color red="0.94117647058823528" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
