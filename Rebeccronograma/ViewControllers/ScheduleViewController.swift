@@ -13,6 +13,7 @@ class ScheduleViewController: UIViewController{
     @IBOutlet weak var todayCollectionView: UICollectionView!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         todayCollectionView.dataSource = self
     }
 }
@@ -23,7 +24,7 @@ extension ScheduleViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = todayCollectionView.dequeueReusableCell(withReuseIdentifier: "todayCell", for: indexPath)
+        let cell = todayCollectionView.dequeueReusableCell(withReuseIdentifier: "todayCell", for: indexPath) as! TodayCell
         return cell
     }
 }
